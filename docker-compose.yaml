@@ -31,7 +31,7 @@ services:
     - payment
 
   redis:
-   image: redis:v1
+   image: redis
    container_name: redis
 
 
@@ -49,7 +49,7 @@ services:
    - redis
    - catalogue
 
-   mysql:
+  mysql:
     image: mysql:v1
     container_name: mysql
 
@@ -60,15 +60,15 @@ services:
       - mysql
   
   rabbitmq:
-    image: rabbitmq:v1
     container_name: rabbitmq
+    image: rabbitmq
     environment:
-      - RABBITMQ_DEFAUT_USER=roboshop
-      - RABBITMQ_DEFAUT_PASS=roboshop123
+      - RABBITMQ_DEFAULT_USER=roboshop
+      - RABBITMQ_DEFAULT_PASS=roboshop123
 
   payment:
-    image: payment:v1
     container_name: payment
+    image: payment:v1
     depends_on:
       - rabbitmq
       - user
